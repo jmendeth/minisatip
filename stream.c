@@ -207,7 +207,7 @@ setup_stream(char *str, sockets * s)
 	strncpy(tmp_str, str, sizeof(tmp_str));
 	tmp_str[sizeof(tmp_str) - 1] = 0;
 	detect_dvb_parameters(str, &t);
-	if (t.sys && t.sys != 5)
+	if (t.sys && t.sys != -1 && t.sys != 5)
 		LOG_AND_RETURN(NULL, "Rejecting stream with wrong msys");
 	LOG("Setup stream %d parameters, sock_id %d, handle %d", s->sid, s->id,
 			s->sock);
